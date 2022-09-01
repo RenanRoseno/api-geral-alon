@@ -14,5 +14,6 @@ route.register(r'campus', CampusViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(route.urls))
+    #path('', include(route.urls))
+    path('', include('api.urls'))
 ]
