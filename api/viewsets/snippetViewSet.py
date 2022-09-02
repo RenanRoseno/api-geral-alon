@@ -36,3 +36,16 @@ class SnippetDetail(APIView):
         snippet = self.get_object(pk)
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class PurchaseList(generics.ListAPIView):
+    serializer_class = CampusSerializer
+
+    def get_queryset(self):
+        queryset = Campus.objects.all()
+        name = self.request.query_params.get('name')
+
+        if name:
+            queryset = queryset.filter(name__contains=name)
+
+        return queryset

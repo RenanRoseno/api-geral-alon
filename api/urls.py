@@ -9,10 +9,11 @@ from rest_framework import routers
 
 route = routers.DefaultRouter()
 route.register(r'states', StateViewSet)
-route.register(r'cities', CityViewSet)
-route.register(r'campus', CampusViewSet)
+route.register(r'cities', CityViewSet,)
+route.register(r'campus', CampusViewSet, basename='campus')
 
 urlpatterns = [
     path('', include(route.urls)),
-    path('campus-teste/<int:pk>', SnippetDetail.as_view()),
+    path('campus-teste', PurchaseList.as_view())
+    #path('campus-teste/<int:pk>', SnippetDetail.as_view()),
 ]
