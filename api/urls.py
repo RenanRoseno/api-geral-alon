@@ -14,6 +14,6 @@ route.register(r'campus', CampusViewSet, basename='campus')
 urlpatterns = [
     path('', include(route.urls)),
     path('campus-teste', PurchaseList.as_view()),
-    path('api-alon', swagger_view),
+    path('api-alon/', swagger_view),
     # path('campus-teste/<int:pk>', SnippetDetail.as_view()),
 ]
