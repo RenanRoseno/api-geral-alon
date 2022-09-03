@@ -1,19 +1,20 @@
-
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
-from api.viewsets.stateViewSet import StateViewSet
-from api.viewsets.cityViewSet import CityViewSet
-from api.viewsets.campusViewSet import *
 
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view as swagger_get_schema_view
 
-route = routers.DefaultRouter()
-route.register(r'states', StateViewSet)
-route.register(r'cities', CityViewSet)
-route.register(r'campus', CampusViewSet)
+schema_view = swagger_get_schema_view(
+    openapi.Info(
+        title="Posts API",
+        default_version='1.0.0',
+        description="API documentation of App",
+    ),
+    public=True,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include(route.urls))
-    path('', include('api.urls'))
+    path('', include('api.urls')),
+
 ]

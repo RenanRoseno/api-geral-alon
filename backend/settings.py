@@ -28,8 +28,6 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,10 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'test_without_migrations',
-    'django_nose',
-
     'rest_framework',
+    'drf_yasg',
     'api'
 ]
 
