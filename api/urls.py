@@ -1,5 +1,4 @@
 from django.urls import path, include
-from api.viewsets.snippetViewSet import *
 from api.viewsets.stateViewSet import *
 from api.viewsets.cityViewSet import *
 from api.viewsets.campusViewSet import *
@@ -13,7 +12,5 @@ route.register(r'campus', CampusViewSet, basename='campus')
 
 urlpatterns = [
     path('', include(route.urls)),
-    path('campus-teste', PurchaseList.as_view()),
     path('api-alon/', swagger_view),
-    # path('campus-teste/<int:pk>', SnippetDetail.as_view()),
 ]
