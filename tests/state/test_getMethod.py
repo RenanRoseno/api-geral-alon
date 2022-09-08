@@ -9,6 +9,7 @@ port = os.getenv('DATABASE_HOST')
 baseUrl = f'http://{port}:8000'
 
 
+# Getting all States objects
 def test_state_get():
     headers = {
         'Accept': '*/*',
@@ -21,7 +22,8 @@ def test_state_get():
     assert response.json()
     
 
-def test_statesId_get():
+# Getting a specific State object with a ID
+def test_stateId_get():
     headers = {
         'Accept': '*/*',
         'User-Agent': 'request',
@@ -33,7 +35,9 @@ def test_statesId_get():
     
     assert response.json()
     
-def test_statesId_get404():
+	
+# Sending a request with a object's ID that does not exists    	
+def test_stateId_get404():
     headers = {
         'Accept': '*/*',
         'User-Agent': 'request',
