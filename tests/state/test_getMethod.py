@@ -18,9 +18,10 @@ def test_state_get():
     url = f'{baseUrl}/states/'
     
     response = requests.get(url, headers=headers)
+    expectedResponse = requests.get('https://httpbin.org/status/200')
     
     assert response.json()
-    
+    assert response.status_code == expectedResponse.status_code
 
 # Getting a specific State object with a ID
 def test_stateId_get():
@@ -32,9 +33,10 @@ def test_stateId_get():
     url = f'{baseUrl}/states/6'
     
     response = requests.get(url, headers=headers)
+    expectedResponse = requests.get('https://httpbin.org/status/200')
     
     assert response.json()
-    
+    assert response.status_code == expectedResponse.status_code
 	
 # Sending a request with a object's ID that does not exists    	
 def test_stateId_get404():
