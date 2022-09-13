@@ -1,6 +1,7 @@
-from rest_framework import viewsets
-from api.serializers.stateSerializer import *
 from api.models.state import *
+from api.serializers.stateSerializer import *
+from django.http import Http404
+from rest_framework import viewsets
 
 
 class StateViewSet(viewsets.ReadOnlyModelViewSet):
@@ -9,7 +10,10 @@ class StateViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         queryset = State.objects.all()
-        name = self.request.query_params.get('name')
-        if name:
-            queryset = queryset.filter(name__contains=name.upper())
+        abbreviation = self.request.query_params.get('abbreviation')
+        
+        if abbreviation:
+            queryset = queryset.filter(name__contains=abbreviation.upper())
+            if not queryset:
+                raise Http404
         return queryset
