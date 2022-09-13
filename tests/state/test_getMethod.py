@@ -53,7 +53,7 @@ def test_stateId_get404():
     
     assert responseStatusCode == bad_r.status_code
 
-# Getting a specific State object with a name query parameter
+# Getting a specific State object with a abbreviation query parameter
 def test_stateAbbreviation_get():
     headers = {
         'Accept': '*/*',
@@ -68,7 +68,7 @@ def test_stateAbbreviation_get():
     assert response.json()
     assert response.status_code == expectedResponse.status_code
 
-# Sending a request with a name query parameter that does not exists
+# Sending a request with a abbreviation query parameter that does not exists
 def test_stateAbbreviation_get404():
     headers = {
         'Accept': '*/*',

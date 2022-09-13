@@ -44,7 +44,7 @@ def test_cityId_get404():
         'User-Agent': 'request',
     }
  
-    url = f'{baseUrl}/cities/355'
+    url = f'{baseUrl}/cities/6000'
    
     response = requests.get(url, headers=headers)
     responseStatusCode = response.status_code
