@@ -10,3 +10,6 @@ class StateViewSet(viewsets.ModelViewSet):
     serializer_class = StateSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['abbreviation']
+    http_method_names = ['get', 'head']
+
+    

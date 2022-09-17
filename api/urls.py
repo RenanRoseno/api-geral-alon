@@ -18,6 +18,6 @@ urlpatterns = [
     path('api-alon/', swagger_view),
     path('campus/', CampusViewSet.as_view()),
     path('campus/<id>', CampusViewSet.as_view()),
-    #path('cities/', CitiesViewSet.as_view()),
+    #path('cities/', CitiesListView.as_view()),
     #path('cities/<id>', CitiesViewSet.as_view()),
 ]
