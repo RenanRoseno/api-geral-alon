@@ -87,4 +87,3 @@ class CampusQuerySet(viewsets.ModelViewSet):
             return campus #Response({"status": "sucess", "data": serializer.data}, status=status.HTTP_200_OK)
         elif not campus:
             raise Http404 
-
