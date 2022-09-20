@@ -1,8 +1,7 @@
-from rest_framework import viewsets, mixins, generics
-from rest_framework.response import Response
-from api.serializers.campusSerializer import *
 from api.models.campus import *
-from rest_framework import status
+from api.serializers.campusSerializer import *
+from rest_framework import generics, mixins, status, viewsets
+from rest_framework.response import Response
 
 
 class CampusViewSet(viewsets.ModelViewSet):
@@ -11,9 +10,16 @@ class CampusViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         name = self.request.query_params.get('name')
+        id_state = self.request.query_params.get('id_state')
+        id_city = self.request.query_params.get('id_city')
         queryset = Campus.objects.all()
+        
         if name:
             queryset = queryset.filter(name__contains=name.upper())
+        if id_state:
+            queryset = Campus.objects.raw(f"SELECT * FROM campus c inner join cities cit on cit.id = c.id_city inner join states s on s.id = cit.id_state Where  s.id = {id_state}")
+        if id_city:
+            queryset = queryset.filter(id_city=id_city)
         return queryset
 
     def create(self, request, *args, **kwargs):
